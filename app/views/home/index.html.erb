@@ -1,0 +1,40 @@
+<div class="d-flex flex-column justify-content-center align-items-center vh-100">
+  <div class="card mb-3 px-4 pt-4 pb-2" style="width: 24rem;">
+    <div class="card-body">
+      <div class="instagram-logo-link"></div>
+      <div class="d-flex justify-content-center">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "w-100" }) do |f| %>
+          <div class="mb-3">
+
+            <%= f.email_field :email, placeholder:"手機號碼、用戶名稱或電子郵件地址",autofocus: true, autocomplete: "email", class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.password_field :password, placeholder:"密碼",autocomplete: "current-password", class: "form-control" %>
+          </div>
+
+          <% if devise_mapping.rememberable? %>
+            <div class="form-check mb-3">
+              <%= f.check_box :remember_me, class:"form-check-input" %>
+              <%= f.label :remember_me,"記住我", class:"form-check-label text-body-secondary" %>
+            </div>
+          <% end %>
+
+          <div class="actions">
+            <%= f.submit "Log in", class: "btn btn-primary insta-primary w-100" %>
+          </div>
+        <% end %>
+      </div>
+      <hr>
+      <div class="d-flex justify-content-center">
+        <%= link_to "忘記密碼？", new_password_path(resource_name), class: "w-100 text-center dark_link"%><br />
+      </div>
+    </div>
+  </div>
+  <div class="card" style="width: 24rem;">
+    <div class="card-body py-4">
+      <p class="card-text text-center text-body-secondary mb-0 fs-6">沒有帳號嗎? <%= link_to "註冊", new_user_registration_path, class:"standard_link"%> </p>
+
+    </div>
+  </div>
+</div>
