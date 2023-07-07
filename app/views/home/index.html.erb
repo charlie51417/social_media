@@ -1,3 +1,6 @@
+<% if user_signed_in? %>
+  <%= link_to "登出", destroy_user_session_path, data: { "turbo-method": "delete" } %>
+<% end %>
 <div class="d-flex flex-column justify-content-center align-items-center vh-100">
   <div class="card mb-3 px-4 pt-4 pb-2" style="width: 24rem;">
     <div class="card-body">
@@ -6,7 +9,7 @@
         <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "w-100" }) do |f| %>
           <div class="mb-3">
 
-            <%= f.email_field :email, placeholder:"手機號碼、用戶名稱或電子郵件地址",autofocus: true, autocomplete: "email", class: "form-control" %>
+            <%= f.text_field :login, placeholder:"手機號碼、用戶名稱或電子郵件地址",autofocus: true, class: "form-control" %>
           </div>
 
           <div class="mb-3">
